@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -18,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,12 +65,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // PRD specific accent colors not covered by the above
+        accentGreen: '#10B981',
+        accentYellow: '#F59E0B',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // 0.5rem (PRD default)
+				md: 'calc(var(--radius) - 2px)', // 0.375rem (PRD buttons)
+				sm: 'calc(var(--radius) - 4px)' // 0.25rem
 			},
 			keyframes: {
 				'accordion-down': {
